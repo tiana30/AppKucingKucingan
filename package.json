@@ -1,0 +1,28 @@
+{
+  "name": "appkucingkucingan",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "ISC",
+  "scripts": {
+    "start-dev": "webpack-dev-server --config webpack.dev.js --open",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "axios": "^0.20.0",
+    "babel-loader": "^8.1.0",
+    "bootstrap": "^4.5.2",
+    "css-loader": "^4.2.1",
+    "html-loader": "^1.2.1",
+    "html-webpack-plugin": "^4.3.0",
+    "jquery": "^3.5.1",
+    "popper": "^1.0.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.2",
+    "webpack-server": "^0.1.2"
+  }
+}
