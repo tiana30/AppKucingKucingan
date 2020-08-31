@@ -55,7 +55,7 @@ module.exports = merge(common,
         title: 'info',
         filename: 'info.html',
         chunks: ['info'],
-        template: './src/info.html',
+        template: './src/page/info.html',
     }),
   ], 
 
