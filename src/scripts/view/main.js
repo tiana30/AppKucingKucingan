@@ -1,36 +1,60 @@
+import { data } from "jquery";
+
 function main() {
-  const keyAPI = "DEMO-API-KEY";
-  const baseUrl = "https://api.thecatapi.com/v1/images/search";
+  const keyAPI = "69aabfa8-6bb6-428f-bfce-a64524b9bee9&";
+  const baseUrl = "https://api.thecatapi.com/v1";
 
-  const getCat = async () => {
-      try {
-          const response = await fetch(`${baseUrl}?api_key=${keyAPI}&limit=5&page=10&order=Desc`);
-          const data = await response.json();
-          if(data.error) {
-              showResponseMessage(data.message);
-          } else {
-              renderAllCats(data.cats);
-          }
-      } catch(error) {
-          showResponseMessage(error);
-      }
-  };
+  const getBreed = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/breeds?api_key=${keyAPI}`);
+        const dataBreed = await response.json();
+        if(dataBreed.error) {
+            showResponseMessage(dataBreed);
+        } 
+       else {
+            renderBreeds(dataBreed);
+        }
+    } catch(error) {
+        showResponseMessage(error);
+    }
+};
 
-  const renderAllCats = (cats) => {
+const renderBreeds = (dataBreed) => {
+   const listBreed = document.querySelector("#listBreed");
+    listBreed.innerHTML="";
+      dataBreed.forEach(breed => {    
+          listBreed.innerHTML += `
+          <option value="${breed.id}">${breed.name}</option>`
+         ;
+      });
+     listBreed.onchange= function() {getImgCat(listBreed.value)};
+}
+
+const getImgCat = async (breed) => {
+    try {
+        const response = await fetch(`${baseUrl}/images/search?api_key=${keyAPI}&breed_ids=${breed}&limit=6`);
+        const data = await response.json();
+        if(data.error) {
+            showResponseMessage(data);
+        }
+         else {
+            renderAllCats(data);
+        }
+    } catch(error) {
+        showResponseMessage(error);
+    }
+};
+
+  const renderAllCats = (data) => {
       const listcatElement = document.querySelector("#listCat");
       listcatElement.innerHTML = "";
-
-      cats.forEach(cat => {
+      data.forEach(cat => {
           listcatElement.innerHTML += `
-              <div class="col-lg-4 col-md-6 col-sm-12" style="margin-top: 12px;">
-                  <div class="card">
-                      <div class="card-body">
-                          <h5>${cat.name}/h5>
-                          <p>${cat.url}</p>
-                          <button type="button" class="btn btn-danger button-delete" id="${cat.id}">Hapus</button>
-                      </div>
-                  </div>
-              </div>
+          <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="200px" src="${cat.url}"</img>
+          </div>
+        </div>
           `;
       });
   };
@@ -38,8 +62,9 @@ function main() {
   const showResponseMessage = (message = "Check your internet connection") => {
       alert(message);
   };
+  getBreed();
+  //listBreed.addEventListener("change", getImgCat(listBreed.value));
 
-  getCat();
 }
 
 export default main; 

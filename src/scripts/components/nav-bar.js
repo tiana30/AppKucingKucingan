@@ -1,8 +1,15 @@
+const template = document.createElement('template');
+        template.innerHTML = `
+        <style>  import "bootstrap/dist/css/bootstrap.min.css";
+        import "./styles/styles.css";
+        </style>`;
+
 class NavBar extends HTMLElement {
 
     constructor() {
         super();
         this.shadowDOM = this.attachShadow({mode:"open"});
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     connectedCallback(){
@@ -15,28 +22,36 @@ class NavBar extends HTMLElement {
         .navbar{
             background-color: #206a5d;
             font-size: medium;
-            position: relative;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 0.5rem 0.5rem 1rem 20rem;
+            justify-content: center;
+            padding:0.5rem 1rem;
+        }
+        @media (min-width: 768px) {
+            .nav-bar {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-left:0;
+            }
+        }
+        @media (min-width: 360px) {
+            .nav-bar {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-left::0;
+            }
         }
     
         .navbar-dark .navbar-brand {
             color: #fff;
         }
-        .align-items-center {
-            -ms-flex-align: center !important;
-            align-items: center !important;
-        }
-        .d-flex {
-            display: -ms-flexbox !important;
-            display: flex !important;
-        }
+
         .navbar-brand {
             display: inline-block;
-            padding-top: .3125rem;
-            padding-bottom: .3125rem;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
             margin-right: 1rem;
             font-size: 1.25rem;
             line-height: inherit;
@@ -49,13 +64,11 @@ class NavBar extends HTMLElement {
         }
         a ::hover{
             box-sizing: border-box;
-            color:#black;
-            
         }
         </style>
 
-        <div class="navbar navbar-dark shadow-sm">
-        <a href="#" class="navbar-brand d-flex align-items-center">
+        <div class="navbar navbar-dark">
+        <a href="#" class="navbar-brand d-flex w-100">
         <strong>Kucing Kucingan</strong>
         </a>
         </div>
