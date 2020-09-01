@@ -1,3 +1,4 @@
+import cat from "../../images/cat.svg";
 const template = document.createElement('template');
         template.innerHTML = `
         <style>  import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,7 +22,8 @@ class NavBar extends HTMLElement {
         <style>
         .navbar{
             background-color: #206a5d;
-            font-size: medium;
+            size:10px;
+            
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -57,6 +59,12 @@ class NavBar extends HTMLElement {
             line-height: inherit;
             white-space: nowrap;
         }
+        .navbar-logo {
+            padding-right: 1rem;
+        }
+        .p {
+            padding-top: .5rem;
+        }
         a {
             color: #fff;
             text-decoration: none;
@@ -68,7 +76,8 @@ class NavBar extends HTMLElement {
         </style>
 
         <div class="navbar navbar-dark">
-        <a href="#" class="navbar-brand d-flex w-100">
+        <a href="../../index.html" class="navbar-brand d-flex w-100">
+        <img class="nav-logo" src="${cat}"> </img>
         <strong>Kucing Kucingan</strong>
         </a>
         </div>

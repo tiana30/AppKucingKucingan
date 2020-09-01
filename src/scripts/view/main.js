@@ -51,7 +51,7 @@ const getImgCat = async (breed) => {
       data.forEach(cat => {
           listcatElement.innerHTML += `
           <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
+          <div class="card mb-4  border-success shadow-sm">
             <img class="bd-placeholder-img card-img-top" width="100%" height="200px" src="${cat.url}"</img>
           </div>
         </div>

@@ -22,9 +22,9 @@ const baseUrl = "https://api.thecatapi.com/v1";
            dataBreed.forEach(breed => {
                listDesc.innerHTML += `
                <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                <div class="card-header"> ${breed.name} </div>
-                <div class="card-body">
+                <div class="card mb-4  shadow-sm">
+                <div class="card-header bg-success text-white"> ${breed.name} </div>
+                <div class="card-body border-success">
                 <p class="card-text"> Asal : ${breed.origin}</p>
                 <p class="card-text"> Temperament : ${breed.temperament}</p>
                 <a href=" ${breed.wikipedia_url}" class="card-text"> Info</a>
