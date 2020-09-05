@@ -32,9 +32,6 @@ module.exports = {
             test: /\.(jpe?g|png|svg|gif)$/,
             use: {
                loader: "file-loader",
-               options: {
-                  name: "/src/images/[name]-[hash].[ext]",
-               },
             },
          }         
 
@@ -52,7 +49,7 @@ module.exports = {
        }),
        new HtmlWebpackPlugin({
         template: './src/pages/info.html',
-        filename: 'page/info.html',
+        filename: 'pages/info.html',
         chunks: ['info'],
         
     }),
